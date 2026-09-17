@@ -1,0 +1,46 @@
+# Example only. Apply values as AIDP Workflow parameters; never commit live endpoints or OCIDs.
+bronze:
+  job: stream_bronze.job
+  parameters:
+    KAFKA_BOOTSTRAP: kafka.example.invalid:9092
+    KAFKA_TOPICS: customer_events,orders,payments,inventory_updates,product_catalog_updates,shipment_events
+    KAFKA_CREDENTIAL_NAME: kafka
+    BRONZE_TABLE: default.default.streamcommerce_bronze_events
+    VOLUME_FQN: default.default.streamcommerce_vol
+    CHECKPOINT_LOCATION: /Volumes/default/default/streamcommerce_vol/checkpoints/streamcommerce_bronze_v1
+    STARTING_OFFSETS: earliest
+    MAX_OFFSETS_PER_TRIGGER: "10000"
+
+silver:
+  job: silver_timed_streaming_workflow_V3.job
+  parameters:
+    BRONZE_TABLE: default.default.streamcommerce_bronze_events
+    SILVER_TABLE: default.default.streamcommerce_silver_events
+    QUARANTINE_TABLE: default.default.streamcommerce_quarantine_events
+    CONTROL_TABLE: default.default.streamcommerce_pipeline_offsets
+    PIPELINE_NAME: streamcommerce_bronze_to_silver
+    POLL_INTERVAL: 5 minutes
+    NOTIFICATION_ENABLED: "false"
+    OCI_NOTIFICATION_TOPIC_OCID: ""
+
+gold:
+  job: streamcommerce_silver_to_gold_dual_V3.job
+  parameters:
+    SILVER_TABLE: default.default.streamcommerce_silver_events
+    DQ_SCORECARD_SOURCE: default.default.streamcommerce_dq_scorecard
+    DQ_RUN_SUMMARY_SOURCE: default.default.streamcommerce_dq_run_summary
+    SKIP_IF_UNCHANGED: "true"
+    DQ_GATE: WARN
+    ADW_CREDENTIAL_NAME: <aidp-credential-store-name>
+
+alert:
+  job: streamcommerce_inventory_stockout_alert_v3.job
+  parameters:
+    SILVER_TABLE: default.default.streamcommerce_silver_events
+    DQ_RUN_SUMMARY_TABLE: default.default.streamcommerce_dq_run_summary
+    EXECUTION_MODE: STREAMING
+    DISPATCH_MODE: OFF
+    AGENT_CHAT_URL: ""
+    NOTIFICATION_FUNCTION_OCID: ""
+    NOTIFICATION_FUNCTION_INVOKE_ENDPOINT: ""
+    OCI_CONFIG_FILE: ""

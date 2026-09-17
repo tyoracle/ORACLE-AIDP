@@ -1,0 +1,36 @@
+{
+  "generated_files": [
+    {
+      "path": "notebooks/bronze/01_kafka_to_bronze_workflow_v2.ipynb",
+      "sha256": "ca7a9bfbdaba9ac7bcd8e20ed95e7555f32e4fae698b3dc33dcf666033b60899"
+    },
+    {
+      "path": "notebooks/bronze/01_kafka_to_bronze_workflow_v2.py",
+      "sha256": "55fd5f35f71ffe5e8c3d6d7f17c30523607f4f007b570b1c47ed3ce0d1738026"
+    },
+    {
+      "path": "notebooks/silver/02_bronze_to_silver_timed_streaming_workflow_dq_v3_fixed_bounds.ipynb",
+      "sha256": "705897619767b7219fc92effa6eafa40c3b5fcc0511ba443d0a7255784388b38"
+    },
+    {
+      "path": "notebooks/silver/02_bronze_to_silver_timed_streaming_workflow_dq_v3_fixed_bounds.py",
+      "sha256": "ef5ea06cd1d9f36c22381a025ef7e87f12f696a80c52d6aef15012db6eeab572"
+    },
+    {
+      "path": "notebooks/gold/04d_silver_to_dual_gold_workflow_v3_3_timer_retry_safe.ipynb",
+      "sha256": "552f7eda11a07d07fe1fb071b383b487d22e7ee0bbca90d7d4af73bbc697fd23"
+    },
+    {
+      "path": "notebooks/gold/04d_silver_to_dual_gold_workflow_v3_3_timer_retry_safe.py",
+      "sha256": "e75a6537505d8ab868318215d82b84cf3c30a0caa86abcfdccdf9615e423292e"
+    },
+    {
+      "path": "notebooks/alert/05_inventory_stockout_alert_workflow_v3_0_agent_function.ipynb",
+      "sha256": "ddb0c4858d5851be5c206d8cd76de8c0ca2538d6d22ce5b097f6dd0631b34b98"
+    },
+    {
+      "path": "notebooks/alert/05_inventory_stockout_alert_workflow_v3_0_agent_function.py",
+      "sha256": "7997bcfea0d7aacb56a557133ef596cb1859676722c1096914c4e6682277a36d"
+    }
+  ]
+}
